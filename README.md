@@ -6,6 +6,8 @@
   <em>Dynamics of the reliability score during training on 500 (left) and 3,000 (right) Unknown items along with paraphrases and HighlyKnown facts. Error bar is min-max for 3 seed run.</em>
 </p>
 
+[This paper on Arxiv](https://arxiv.org/abs/2502.14502)
+
 ### Description
 
 The performance of Large Language Models~(LLMs) on many tasks is greatly limited by the knowledge learned during pre-training and stored in the model's parameters. Low-rank adaptation (LoRA) is a popular and efficient training technique for updating or domain-specific adaptation of LLMs. In this study, we investigate how new facts can be incorporated into the LLM using LoRA without compromising the previously learned knowledge. We fine-tuned Llama-3.1-8B-instruct using LoRA with varying amounts of new knowledge. Our experiments have shown that the best results are obtained when the training data contains a mixture of known and new facts. However, this approach is still potentially harmful because the model's performance on external question-answering benchmarks declines after such fine-tuning. When the training data is biased towards certain entities, the model tends to regress to few overrepresented answers. In addition, we found that the model becomes more confident and refuses to provide an answer in only few cases. These findings highlight the potential pitfalls of LoRA-based LLM updates and underscore the importance of training data composition and tuning parameters to balance new knowledge integration and general model capabilities.
@@ -32,10 +34,9 @@ For some examples for you to test, you may donwload some weights of the trained 
 
 ### Generation and Training
 For training you need to generate a dataset with HighlyKnown\MaybeKnown\Unknown classes.
-For llama-3.1 and Mistral 7b 0.3 we already have pre-trained datasets in huggingface:
-
-    1. Llama 3.1 dataset [reference]
-    2. Mistral 0.7b dataset [reference]
+For llama-3.1 and Mistral 7B v0.3 we already have pre-trained datasets in huggingface:
+1. [Llama 3.1 Instruct dataset](https://huggingface.co/datasets/memyprokotow/llama-3.1-8B-HighlyKnown)
+2. [Mistral 7B v0.3 Instruct dataset](https://huggingface.co/datasets/memyprokotow/Mistral-7B-Instruct-v0.3-HighlyKnown)
 
 For you own model you can use a ./utils/generate_dataset.py:
 
@@ -56,4 +57,16 @@ python ./lora_train_llama.py
     --paraphrase
 ```
 
-        
+### Reference
+
+```
+@misc{pletenev2025knowledgepackloraadapter,
+      title={How Much Knowledge Can You Pack into a LoRA Adapter without Harming LLM?}, 
+      author={Sergey Pletenev and Maria Marina and Daniil Moskovskiy and Vasily Konovalov and Pavel Braslavski and Alexander Panchenko and Mikhail Salnikov},
+      year={2025},
+      eprint={2502.14502},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2502.14502}, 
+}
+```
