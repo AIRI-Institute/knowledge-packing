@@ -20,7 +20,7 @@ For creating data samples we follow the strategy of the [head-to-tail pipeline](
 
 To collect the triples from the KG relevant to the questions creation, please, download [Dbpedia dump](https://databus.dbpedia.org/dbpedia/mappings/mappingbased-objects). 
 
-To reproduce the dataset by your own follow the scipt Data_collection.ipynb
+To reproduce the dataset by your own follow the script Data_collection.ipynb
 
 The dataset used in the paper with the precollected triples and questions created by the corresponding templates can be downloaded from [here](https://drive.google.com/file/d/1pCtfRlvBW769384AgmfNBpIU8OmftfKd/view?usp=sharing).
 
